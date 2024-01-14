@@ -1,11 +1,10 @@
 <script setup lang="ts">
 const clientId = useCookie('clientId');
-
 </script>
 
 <template>
     <HeaderView :title="'DRIVE-IN'"/>
-    <div class="bg-white  p-4 absolute top-[81px] pl-[250px]  w-full">
+    <div class="bg-white  p-4 absolute top-[81px] pl-[260px]  w-full">
       <span v-if="clientId === '000001'" class="text-black drive-in">DRIVE-IN</span>
       <span v-else class="text-black drive-in">Welcome</span>
     </div>

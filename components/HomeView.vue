@@ -92,25 +92,24 @@ import {ref} from "vue";
 
 const store = useDefaultStore();
 const clientId = useCookie('clientId');
-const handleDriveInClick = () => {
-  clientId.value = "000001";
-  store.handleNavigateToArticles();
 
-}
 const username = ref("");
 const password = ref("");
-// const errorMessage
+
 const login = async () => {
-  const { data, error } = await useFetch('/api/getClients', {
+  const { data } = await useFetch('/api/getClients', {
     method: 'POST',
     body: { pClieID: username.value, pPass: password.value,locale:'fr' }
   });
-
   if(data.value.OK){
     store.setLogIn(username.value);
     store.handleNavigateToArticles();
   }
 };
+const handleDriveInClick = () => {
+  clientId.value = "000001";
+  store.handleNavigateToArticles();
+}
 </script>
 <style scoped>
 .middle > div >  div{

@@ -2,24 +2,22 @@
   <div class="search-wrapper mt-5">
     <div>
       <div class="search">
-<!--        <img src='@/assets/search.svg' alt="">-->
         <input  class="bg-white text-black" type="text" v-model="inputValue" @input="handleChangeSearch" placeholder="Rechercher">
       </div>
       <div @click="handleSearchClick" class="search-button">
         <img  src="~/assets/search.svg" alt="search">
       </div>
-<!--      <button @click="handleSearchClick">Search</button>-->
     </div>
   </div>
 </template>
 
 <script setup>
-const { searchValue,handleChangeSearch } = defineProps({
+const { searchValue,handleChangeSearch,handleSearchClick } = defineProps({
   searchValue: String,
   handleChangeSearch:Function,
   handleSearchClick:Function
 });
-const inputValue = ref(searchValue)
+const inputValue = ref(searchValue);
 
 </script>
 

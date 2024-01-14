@@ -21,17 +21,17 @@ export const useDefaultStore = defineStore("user", () => {
   const handleNavigateToArticles = () => {
       window.location.href = localePath({name: 'articles'})
   }
-  // const count = ref(0);
-  // const name = ref("Eduardo");
-  // const doubleCount = computed(() => count.value * 2);
 
-  // function increment() {
-  //   count.value++;
-  // }
-
-  return { setLogIn, isLogin,headerMessage,handleHeaderMessageChangeToDriveIn ,handleNavigateToArticles,handleHeaderMessageChangeToWelcome};
-}
-,
- {
+  return {
+      setLogIn,
+      isLogin,
+      headerMessage,
+      handleHeaderMessageChangeToDriveIn,
+      handleNavigateToArticles,
+      handleHeaderMessageChangeToWelcome
+  }
+  }
+    ,
+    {
       persist: true
     });

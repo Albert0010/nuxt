@@ -3,7 +3,7 @@
 
 <template>
   <HeaderView :title="'Welcome'"/>
-  <div class="bg-white  p-4 absolute top-[81px] pl-[250px]  w-full">
+  <div class="bg-white  p-4 absolute top-[81px] pl-[260px]  w-full">
     <span class="text-black drive-in">Welcome</span>
   </div>
 </template>

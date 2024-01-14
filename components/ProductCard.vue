@@ -40,12 +40,11 @@
 
 <script setup>
 
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import CounterCalc from "@/components/CounterCalc.vue";
 import {imageBaseUrl} from "~/utils/_helpers.ts";
 
 const count = ref(1);
-const price = ref(600);
 
 const updateCount = (newCount) => {
   count.value = newCount;
@@ -55,8 +54,9 @@ const addToBasket = () => {
   // Implement your logic to add to the basket here
 };
 
-const props = defineProps(['product']);
-
+const {product} = defineProps({
+  product: Object,
+});
 
 </script>
 

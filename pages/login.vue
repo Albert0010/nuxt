@@ -35,26 +35,12 @@
 <script setup>
 
 import { ref } from "vue";
-import { useDefaultStore } from "~/stores/auth.ts";
-import axios from "axios";
 
-const localePath = useLocalePath();
-const router = useRouter();
 const username = ref("");
 const password = ref("");
-const store = useDefaultStore();
 
 const login = async () => {
-  // if (username.value === "admin" && password.value === "admin") {
-  //   store.setLogIn();
-    // router.push(localePath({name:'index'}));
-  // } else {
-  //   alert("Wrong password or email");
-  // }
-  // const response = await axios.post('/api/getClients', {
-  //   locale:"fr"
-  // });
-  const { data, error } = await useFetch('/api/getClients', {
+  await useFetch('/api/getClients', {
     method: 'POST',
     body: { pClieID: username.value, pPass: password.value,locale:'fr' }
   });

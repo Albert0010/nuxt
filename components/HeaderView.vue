@@ -4,16 +4,14 @@
       <img src="@/assets/LOGO%20Boissons%20Heintz.png" alt="heintz logo" />
     </div>
     <div class="header">
-<!--      <div class="welcome">-->
-<!--        <span>{{props.title}}</span>-->
-<!--      </div>-->
       <div class="header-right">
         <div class="header-right-button cursor-pointer" @click="handleIsBasketOpen">
           <span>Panier</span>
           <img class="header-right-button-icon" src="@/assets/Vector.svg" alt="basket icon" />
         </div>
-        <div class="header-right-button account-button" @click="handleNavigateToLoginPage">
-          <span>Quitter drive-in</span>
+        <div v-if="props.title === 'DRIVE-IN'" class="header-right-button account-button" @click="handleNavigateToLoginPage">
+          <span v-if="props.title === 'DRIVE-IN'">Quitter drive-in</span>
+          <span v-else>Quitter log-in</span>
           <img class="header-right-button-icon" src="@/assets/log-out.svg" alt="basket icon" />
         </div>
       </div>
@@ -26,7 +24,6 @@
         <span>DE</span>
       </NuxtLink>
     </div>
-    <!--    {{$t('test')}}-->
   </header>
 </template>
 
@@ -37,9 +34,8 @@ import {onMounted, ref } from "vue";
 import {useDefaultStore} from "~/stores/auth";
 
 const props = defineProps({
-  title: String, // Correctly define the title prop
+  title: String,
 });
-// const props = defineProps(['handleIsBasketOpen','handleIsBasketClose','title'])
 const router = useRouter();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
@@ -54,10 +50,7 @@ const handleHeinzLogoClick = () => {
   navigateTo(`/${(locale.value)}`)
 };
 const handleNavigateToLoginPage = () => {
-  if (!localStorage.getItem('isLogin')) {
-    // props.handleIsBasketClose();
-    router.push(localePath({name:'login'}));
-  }
+    router.push(localePath({name:'index'}));
 };
 
 
