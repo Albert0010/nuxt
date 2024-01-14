@@ -1,32 +1,30 @@
 <template>
-  <header class="app-header">
+  <header class="app-header relative">
     <div class="logo" @click="handleHeinzLogoClick">
       <img src="@/assets/LOGO%20Boissons%20Heintz.png" alt="heintz logo" />
     </div>
     <div class="header">
-      <div class="lang">
-        <NuxtLink :to="switchLocalePath('de')" key="de"  class="de" :class="{ active: activeLocale === 0 }" @click="handleChangeLanguage('de')">
-          <img src="@/assets/de.png" alt="de" />
-          <span>DE</span>
-        </NuxtLink>
-        <NuxtLink :to="switchLocalePath('fr')" class="fr" :class="{ active: activeLocale === 1 }" @click="handleChangeLanguage('fr')">
-          <img src="@/assets/fr.png" alt="fr" />
-          <span>FR</span>
-        </NuxtLink>
-      </div>
-      <div class="welcome">
-        <span>{{props.title}}</span>
-      </div>
+<!--      <div class="welcome">-->
+<!--        <span>{{props.title}}</span>-->
+<!--      </div>-->
       <div class="header-right">
-        <div class="header-right-button card-button" @click="handleIsBasketOpen">
-          <span>Shopping cart</span>
+        <div class="header-right-button cursor-pointer" @click="handleIsBasketOpen">
+          <span>Panier</span>
           <img class="header-right-button-icon" src="@/assets/Vector.svg" alt="basket icon" />
         </div>
         <div class="header-right-button account-button" @click="handleNavigateToLoginPage">
-          <span>Account</span>
-          <img class="header-right-button-icon" src="@/assets/Vector.svg" alt="basket icon" />
+          <span>Quitter drive-in</span>
+          <img class="header-right-button-icon" src="@/assets/log-out.svg" alt="basket icon" />
         </div>
       </div>
+    </div>
+    <div class="lang absolute right-0">
+      <NuxtLink :to="switchLocalePath('fr')" class="fr" :class="{ active: activeLocale === 1 }" @click="handleChangeLanguage('fr')">
+        <span>FR</span>
+      </NuxtLink>
+      <NuxtLink :to="switchLocalePath('de')" key="de"  class="de" :class="{ active: activeLocale === 0 }" @click="handleChangeLanguage('de')">
+        <span>DE</span>
+      </NuxtLink>
     </div>
     <!--    {{$t('test')}}-->
   </header>
@@ -46,7 +44,6 @@ const router = useRouter();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 const { locale } = useI18n();
-const store = useDefaultStore()
 const activeLocale = ref(1);
 
 const handleChangeLanguage = (lang)  => {
@@ -71,9 +68,9 @@ onMounted(()=>{
 
 <style scoped>
 .app-header {
-  background-color: #002648;
+  background-color: #013980;
   color: #fff;
-  padding: 16px 40px;
+  padding: 16px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,15 +85,14 @@ onMounted(()=>{
   margin-left: 250px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
-  //background-color: #002648;
 }
 .header-right {
   display: flex;
   justify-content: center;
   gap: 45px;
-  background-color: #002648;
+  background-color: #013980;
 
 }
 .header-right-button {
@@ -131,7 +127,6 @@ onMounted(()=>{
 .header-right-button-icon {
   max-width: 20px;
   max-height: 28px;
-  background-color: #FF0000;
 }
 .logo {
   position: absolute;
@@ -148,39 +143,29 @@ onMounted(()=>{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #002648;
+  background-color: #013980;
 }
 .lang > a {
-  border-radius: 10px;
-  color: black;
-  padding: 10px;
+  color: rgba(255, 255, 255, 0.33);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  width: 50px;
   text-decoration: unset;
-}
-
-.de {
-  background-color: white;
-}
-.fr {
-  background-color: white;
+  border-radius: 4px 0 0 4px;
 }
 .active{
-  background-color: #005099;
-}
-.active > span{
-  background-color: #005099;
-
+  background-color: #002047;
+  color: white !important;
 }
 .welcome {
   font-size: 96px;
   font-family: 'Inria Sans', sans-serif;
-  //background-color: #002648;
+  //background-color: #013980;
 }
 .welcome > span{
-  //background-color: #002648;
+  //background-color: #013980;
 }
 </style>

@@ -13,21 +13,22 @@ export  const fetchArticlesAndGropes = async (url:string,body?:{pClieID:string;p
 
             if(rawGroups[i].NUM_GRO.endsWith("00")){
 
-                const groupeCode = rawGroups[i].NUM_GRO.slice(0,3);
+                const groupCode = rawGroups[i].NUM_GRO.slice(0,3);
 
-                const groupe = {
-                    mainGroupe:rawGroups[i],
-                    subGroupe:[],
+                const group = {
+                    mainGroup:rawGroups[i],
+                    subGroup:[],
+                    isActive:false,
                 }
 
                 for (let j = i + 1; j < rawGroups.length; j++) {
-                    const subGroupeCode = rawGroups[j].NUM_GRO.slice(0,3);
-                    if(groupeCode !== subGroupeCode){
+                    const subGroupCode = rawGroups[j].NUM_GRO.slice(0,3);
+                    if(groupCode !== subGroupCode){
                         break
                     }
-                    groupe.subGroupe = [...groupe.subGroupe,rawGroups[j]];
+                    group.subGroup = [...group.subGroup,rawGroups[j]];
                 }
-                groups.push(groupe)
+                groups.push(group)
             }
         }
         return groups

@@ -1,11 +1,13 @@
 <template>
-  <div class="product-info-footer-counter">
-    <div @click="incrementCount" class="add-cross">
-      <img src="@/assets/add-cross.svg" alt="add cross">
+  <div class="flex gap-2">
+    <div class="flex justify-center items-center cursor-pointer" @click="incrementCount" >
+      <img src="@/assets/add.svg" alt="add cross">
     </div>
-    <span>{{ count }}</span>
-    <div @click="decrementCount" class="sub-cross">
-      <img src="@/assets/sub-cross.svg" alt="sub cross">
+    <div class="product-info-footer-counter">
+      <span>{{ count }}</span>
+    </div>
+    <div class="flex justify-center items-center cursor-pointer" @click="decrementCount" >
+      <img src="@/assets/sub.svg" alt="sub cross">
     </div>
   </div>
 </template>
@@ -31,12 +33,12 @@ const decrementCount = () => {
 
 <style scoped>
 .product-info-footer-counter {
-  position: relative;
   display: flex;
-  justify-content: space-between;
-  border-radius: 15px;
-  border: 1px solid #D9D9D9;
+  justify-content: center;
+  align-content: center;
   width: 161px;
+  border-radius: 500px;
+  border: 1px solid #D9D9D9;
 }
 
 .product-info-footer-counter > span {
@@ -51,7 +53,6 @@ const decrementCount = () => {
 }
 
 .add-cross {
-  background-color: #5DC961;
   border-radius: 15px;
   border: 1px solid #D9D9D9;
   padding: 16px 10px;

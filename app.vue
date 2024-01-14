@@ -12,10 +12,11 @@
 
 <style scoped>
 main {
-  height: calc(100vh - 156px);
   position: absolute;
-  top: 156px;
+  top: 131px;
   width: 100%;
+  background-color: white;
+  padding-bottom: 50px;
 }
 </style>
 <style>
@@ -23,5 +24,6 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color-scheme:light !important;
 }
 </style>

@@ -6,7 +6,6 @@
       </h1>
     </div>
     <div class="wrapper">
-
       <div class="divide">
         <div class="card-wrapper">
           <div class="card">
@@ -20,7 +19,7 @@
             <span>
               LIVRAISON
             </span>
-            <p class="intro">
+            <p class="intro text-black">
               Lassen Sie sich Ihre Bestellung bequem zum Ort Ihrer Wahl liefern.
             </p>
             <div>
@@ -29,9 +28,9 @@
                 <input type="password" class="input" placeholder="Passwort" id="password" v-model="password">
                 <div>
                   <div>
-                    <input type="checkbox" id="merken">
+                    <input class="bg-amber-50" type="checkbox" id="merken">
                   </div>
-                  <label for="merken">Login merken</label>
+                  <label class="text-black" for="merken">Login merken</label>
                 </div>
               </div>
               <button class="btn" @click="login">
@@ -72,7 +71,7 @@
             <span>
               DRIVE-IN
             </span>
-            <p class="intro">
+            <p class="intro text-black">
               Holen Sie Ihre Bestellung persönlich bei uns in Hosingen ab und profitieren Sie von ständig neuen Sonderangeboten!
             </p>
             <button class="btn" @click="handleDriveInClick">
@@ -92,8 +91,9 @@ import {useDefaultStore} from "~/stores/auth";
 import {ref} from "vue";
 
 const store = useDefaultStore();
-
+const clientId = useCookie('clientId');
 const handleDriveInClick = () => {
+  clientId.value = "000001";
   store.handleNavigateToArticles();
 
 }
@@ -267,7 +267,7 @@ const login = async () => {
 }
 .high-header{
   margin-bottom: 50px;
-  margin-top: 45px;
+  margin-top: 60px;
   background-color: #EF3E33;
   padding: 20px;
   width: 100%;

@@ -1,32 +1,38 @@
 <template>
-  <div class="product">
+  <div class="product flex gap-4 flex-col">
     <div class="product-icon">
       <div>
         <img v-if="product.IMAGE.length" :src="`${imageBaseUrl}${product.IMAGE}`" alt="product icon">
         <img class="is-not-exist" v-else src="~/assets/is-not-exist.svg" alt="is not exist image">
       </div>
     </div>
-    <div class="product-info">
+    <div class="product-info relative">
       <span class="product-info-id">{{product?.NUM_ART}}</span>
       <div class="product-info-header">
         <span>{{product?.DESA_ART}}</span>
-        <span>{{product?.PRIX?.PRIXTVAC}} €</span>
+
       </div>
       <div class="product-info-subheader">
         <span>Unité {{product.UNITE}} {{product.PACKAGING}}</span>
-        <div>
-          <span>Prix</span>
-          <span class="drive-in">drive-in</span>
-        </div>
       </div>
-      <div class="product-info-footer">
-        <CounterCalc @update:count="updateCount" :count="count" />
-        <div class="add-to-basket" @click="addToBasket">
-          <span>
-            Add to Basket
-          </span>
-          <img src="@/assets/basket.svg" alt="add to basket">
+      <div class="flex justify-between flex-col mt-12 mb-10">
+        <div class="flex w-full justify-between items-center">
+          <CounterCalc @update:count="updateCount" :count="count" />
+          <div>
+            <span class="text-[28px] font-bold">{{product?.PRIX?.PRIXTVAC}} €</span>
+            <div class="flex gap-1.5">
+              <span class="drive-in">Prix</span>
+              <span class="drive-in">drive-in</span>
+            </div>
+          </div>
         </div>
+
+      </div>
+      <div class="add-to-basket absolute bottom-[-50px]" @click="addToBasket">
+        <img src="@/assets/basket.svg" alt="add to basket">
+        <span>
+            AJOUTER AU PANIER
+          </span>
       </div>
     </div>
   </div>
@@ -51,9 +57,7 @@ const addToBasket = () => {
 
 const props = defineProps(['product']);
 
-onMounted(() => {
-  console.log('Product Icon:', props.product);
-});
+
 </script>
 
 <style scoped>
@@ -61,18 +65,18 @@ onMounted(() => {
   border-radius: 20px;
   border: 2px solid #D9D9D9;
   padding: 20px;
-  display: flex;
-  gap: 18px;
-  max-width: 671px;
+  max-width: 420px;
+  background-color: white;
+  color:black;
 }
 .product-icon > div {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dotted;
+  border: 2px dotted black;
   border-radius: 10px;
-  width: 153px;
-  height: 153px;
+  width: 100%;
+  height: 300px;
 }
 .is-not-exist {
   max-width: 48px;
@@ -122,17 +126,13 @@ onMounted(() => {
   line-height: 21px;
   text-align: left;
 }
-.product-info-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 .add-to-basket {
   cursor: pointer;
-  width: 220px;
-  border-radius: 15px;
+  width: 100%;
   padding: 10px 16px;
-  background-color: #5D9CC9;
+  border-radius: 15px;
+  background: #013980;
   color: white;
   font-family: Inter, serif;
   font-size: 20px;
